@@ -356,11 +356,16 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+main {
+    height: inherit;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: inherit;
+    width: 100%;
 }
 
 .form {
@@ -420,6 +425,10 @@ body {
     margin-top: 30px;
 }
 
+.form-buttons_wrapper a {
+    margin-top: 14px;
+}
+
 .button-primary {
     background: #3369F3;
     border-radius: 8px;
@@ -433,6 +442,7 @@ body {
     color: #FFFFFF;
     width: 100%;
     padding: 12px 0;
+    max-width: 280px;
 }
 
 .link-primary {
@@ -442,8 +452,11 @@ body {
     text-align: center;
     color: #3369F3;
     text-decoration: none;
-    margin-top: 14px;
     display: inline-block;
+}
+
+.link-secondary {
+    color: #FF0000;
 }
 
 .error-wrapper {
@@ -465,4 +478,80 @@ body {
     text-align: center;
     color: #1E1E1E;
     margin-bottom: 55px;
+}
+
+.button-circle {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-wrapper {
+    display: flex;
+    height: inherit;
+}
+
+.profile-inner_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-back_wrapper {
+    background: #FBFBFB;
+    width: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-back_wrapper svg {
+    transform: rotate(180deg);
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #1E1E1E;
+    margin-bottom: 60px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-width: 510px;
+    width: 100%;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: #999999;
+}
+
+ul li:not(:last-child) {
+    border-bottom: 1px solid #EAEAEA;
+}
+
+ul li span:not(:last-child) {
+    color: #1E1E1E;
+}
+
+ul li span {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: inherit;
+}
+
+ul:last-child {
+    margin-top: 40px;
 }
