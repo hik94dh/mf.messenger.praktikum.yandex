@@ -357,6 +357,12 @@ body {
     overflow: hidden;
 }
 
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 main {
     height: inherit;
 }
@@ -398,6 +404,7 @@ main {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+    text-align: left;
 }
 
 .form-input_placeholder {
@@ -524,9 +531,7 @@ main {
     margin: 0;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.profile-inner_wrapper ul {
     margin: 60px 0;
     width: inherit;
 }
@@ -536,37 +541,37 @@ ul {
     width: inherit;
 }
 
-.profile-links {
+.profile-inner_wrapper .profile-links {
     margin: 0;
 }
 
-ul li {
+.profile-inner_wrapper ul li {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
     color: #999999;
 }
 
-ul li:first-child {
+.profile-inner_wrapper ul li:first-child {
     padding-top: 0;
 }
 
-ul li:not(:last-child) {
+.profile-inner_wrapper ul li:not(:last-child) {
     border-bottom: 1px solid #EAEAEA;
 }
 
-ul li span:not(:last-child) {
+.profile-inner_wrapper ul li span:not(:last-child) {
     color: #1E1E1E;
 }
 
-ul li span {
+.profile-inner_wrapper ul li span {
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     color: inherit;
 }
 
-ul li input {
+.profile-inner_wrapper ul li input {
     border: none;
     padding: 0;
     outline: none;
@@ -577,7 +582,7 @@ ul li input {
     text-align: right;
 }
 
-ul li input::-webkit-input-placeholder {
+.profile-inner_wrapper ul li input::-webkit-input-placeholder {
     color: inherit;
 }
 
@@ -804,6 +809,7 @@ ul li input::-webkit-input-placeholder {
     color: inherit;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .chat-dialog_header-image {
@@ -837,13 +843,20 @@ ul li input::-webkit-input-placeholder {
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    /*background: #3369F3;*/
     background: #1E1E1E;
     display: block;
 }
 
 .chat-dialog_header-dots i:not(:last-child) {
     margin-bottom: 3px;
+}
+
+.chat-dialog_header-dots-block {
+    position: absolute;
+    right: 10px;
+    top: 65px;
+    width: 210px;
+    visibility: hidden;
 }
 
 .chat-dialog_messages {
@@ -958,4 +971,130 @@ ul li input::-webkit-input-placeholder {
 }
 .chat-dialog_footer-attach svg {
     fill: #999999;
+}
+
+.chat-dialog_footer-attach-block {
+    width: 162px;
+    height: 128px;
+    margin-bottom: 10px;
+    visibility: hidden;
+}
+
+.popper {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+}
+
+.popper svg {
+    fill: #3369F3;
+    height: 22px;
+    width: 22px;
+}
+
+.popper li span {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1E1E1E;
+    vertical-align: text-top;
+    padding-left: 7px;
+}
+
+.popper li {
+    margin: 15px;
+    cursor: pointer;
+}
+
+.attach_is-open {
+    visibility: visible;
+}
+
+.attach_is-open svg {
+    fill: #3369F3;
+}
+
+.attach_is-open i {
+    background: #3369F3;
+}
+
+.modal-wrapper {
+    z-index: 10;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+}
+
+.modal-backdrop {
+    position: fixed;
+    background: #000000;
+    opacity: 0.4;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.modal {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    width: 340px;
+    text-align: center;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.is-open-modal {
+    display: flex;
+}
+
+.profile-image_input {
+    align-items: center;
+}
+
+.profile-image_input label {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #3369F3;
+    max-width: 122px;
+    text-align: center;
+    margin-bottom: 45px;
+    min-height: 32px;
+}
+
+.profile-image_input input {
+    visibility: hidden;
+    height: 0;
+}
+
+.profile-image_hint {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    color: #FF2F2F;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+.show-hint {
+    display: inline-block;
 }
