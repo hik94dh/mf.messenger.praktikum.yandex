@@ -760,6 +760,7 @@ main {
     line-height: 13px;
     color: #999999;
     white-space: pre;
+    vertical-align: top;
 }
 
 .sidebar-chat_data-messages {

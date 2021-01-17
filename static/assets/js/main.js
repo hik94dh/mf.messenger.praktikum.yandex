@@ -26,9 +26,9 @@ if (submitButton) {
     e.preventDefault();
     let obj = {}
 
-    inputs.forEach(item => {
-      if(item.value) {
-        obj[item.name] = item.value
+    inputs.forEach(({ name, value }) => {
+      if(value) {
+        obj[name] = value
       }
     });
 
