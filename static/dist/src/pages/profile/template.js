@@ -31,6 +31,7 @@ export const template = `<div class="container">
             </div>
         </div>
     </div>
+    {{{modal}}}
   </div>`;
 // const modalTemplate = `
 //     <div class="modal-wrapper js-change-image-modal">

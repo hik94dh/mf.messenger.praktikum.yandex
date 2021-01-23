@@ -1,5 +1,5 @@
 import Block from '../../modules/block.js';
-const template = `<button id="test" onclick="window.eventBus.emit('{{event}}')" class="button-primary js-button-submit">{{text}}</button>`;
+const template = `<button type="{{type}}" class="button-primary {{class}}">{{text}}</button>`;
 export class Button extends Block {
     constructor(props) {
         super(template, props);

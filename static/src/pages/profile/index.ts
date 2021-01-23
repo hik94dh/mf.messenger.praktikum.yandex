@@ -1,6 +1,8 @@
 import Block from "../../modules/block.js";
 import { render } from '../../utils/render.js';
 import { template } from "./template.js";
+
+import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
 
 const data = {
@@ -53,6 +55,25 @@ const data = {
     },
     button: new Button({
         text: 'Сохранить',
+    }).render(),
+    modal: new Modal({
+        id: 'profile-image_input',
+        title: 'Загрузите файл',
+        label: 'Выбрать файл на компьютере',
+        class: 'profile-image_input',
+        input: {
+            type: 'file',
+            accept: 'image/*,image/jpeg',
+            multiple: true,
+        },
+        hint: {
+            show: true,
+            text: 'Нужно выбрать файл',
+        },
+        button: new Button({
+            text: 'Поменять',
+            type: 'submit'
+        }).render(),
     }).render(),
 }
 

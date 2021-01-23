@@ -2,12 +2,14 @@ import Block from "../../modules/block.js";
 import { render } from '../../utils/render.js';
 import { template } from "./template.js";
 
+import { Modal } from '../../components/Modal/Modal.js';
+import { Button } from '../../components/Button/Button.js';
+
 const data = {
     profile: 'Профиль',
     searchPlaceholder: 'Поиск',
     headerName: 'Вадим',
     textareaPlaceholder: 'Сообщение',
-
     chat: {
       isOpen: true,
       time: '19 июня',
@@ -32,7 +34,6 @@ const data = {
             classForTime: 'chat-dialog_message-item-time-to',
         }
     ],
-
     chats: [
         {
             name: 'Андрей',
@@ -59,7 +60,16 @@ const data = {
             time: 'Пт',
             isActive: 'sidebar-chat_is-active',
         },
-    ]
+    ],
+    modal: new Modal({
+        title: 'Удалить пользователя',
+        label: 'Логин',
+        classForLabel: 'form-input_placeholder',
+        button: new Button({
+            text: 'Удалить',
+            type: 'text'
+        }).render(),
+    }).render(),
 }
 
 export default class Messenger extends Block {

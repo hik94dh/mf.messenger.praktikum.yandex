@@ -116,5 +116,6 @@ export const template = `
     {{/if}}
     </div>
 </div>
+{{{modal}}}
 
 `

@@ -116,6 +116,7 @@ export const template = `
     {{/if}}
     </div>
 </div>
+{{{modal}}}
 
 `;
 //# sourceMappingURL=template.js.map
