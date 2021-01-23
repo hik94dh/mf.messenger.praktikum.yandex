@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node server.js",
     "publish": "node server.js",
+    "tsc": "tsc --build ./tsconfig.json",
     "start": "node server.js"
   },
   "repository": {
@@ -20,6 +21,8 @@
   },
   "homepage": "https://github.com/hik94dh/mf.messenger.praktikum.yandex#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "typescript": "^4.1.3"
   }
 }

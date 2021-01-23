@@ -367,6 +367,10 @@ main {
     height: inherit;
 }
 
+main > div {
+    height: inherit;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -500,6 +504,7 @@ main {
 .profile-wrapper {
     display: flex;
     height: inherit;
+    width: 100%;
 }
 
 .profile-inner_wrapper {

@@ -20,6 +20,8 @@ const changeImageModalTitle = document.getElementById('profile-image_modal-title
 const changeImageSubmitButton = document.getElementById('profile-image_submit-button');
 const changeImageHint = document.querySelector('.profile-image_hint');
 
+// console.log('submitButton', window.Handlebars)
+
 
 if (submitButton) {
   submitButton.addEventListener("click", e => {
