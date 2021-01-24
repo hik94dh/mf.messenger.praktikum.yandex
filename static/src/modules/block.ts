@@ -39,7 +39,7 @@ export default class Block {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
 
-    setProps = (nextProps: {[key: string]: string}) => {
+    setProps = (nextProps: {[key: string]: any}) => {
         if (!nextProps) {
             return;
         }
@@ -68,11 +68,13 @@ export default class Block {
     }
 
     _makePropsProxy(props) {
+        const self = this;
+
         return new Proxy(props, {
             set(target, prop, value) {
-                target[prop] = value;
+                target[prop as keyof typeof target] = value;
 
-                // this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, self.props, target);
                 return true;
             },
             deleteProperty() {

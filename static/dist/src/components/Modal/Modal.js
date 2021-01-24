@@ -1,32 +1,15 @@
-import Block from '../../modules/block.js';
-const template = `
-    <div class="modal-wrapper js-change-image-modal is-open-modal">
-        <div class="modal-backdrop"></div>
-        <div class="modal">
-            <h4 class="modal-title" id="profile-image_modal-title">{{{title}}}</h4>
-            
-            <form method="post" enctype="multipart/form-data">
-                <div class="form-input_wrapper {{class}}">
-                    <label for="{{id}}" class="{{classForLabel}}">{{{label}}}</label>
-                    <input
-                        id="{{id}}"
-                        name="{{input.name}}"
-                        type="{{input.type}}"
-                        accept="{{input.accept}}"
-                        multiple="{{input.multiple}}"
-                    >
-                </div>
-                {{{button}}}
-                {{#if hint.show}}
-                    <p class="profile-image_hint">{{hint.text}}</p>
-                {{/if}}
-            </form>
-        </div>
-    </div>
-`;
-export class Modal extends Block {
+import BlockComponent from '../../modules/block.js';
+import { modalTemplate } from './template.js';
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.querySelector('.js-modal');
+    const modalBackdrop = document.querySelector('.js-modal-backdrop');
+    modalBackdrop === null || modalBackdrop === void 0 ? void 0 : modalBackdrop.addEventListener('click', () => {
+        modal === null || modal === void 0 ? void 0 : modal.classList.toggle("is-open-modal");
+    });
+});
+export class Modal extends BlockComponent {
     constructor(props) {
-        super(template, props);
+        super(modalTemplate, props);
     }
     render() {
         return this.compile(this.props);

@@ -83,6 +83,7 @@ export const template = `
                 </div>
             {{/if}}
         {{/each}}
+        </div>
 
         <div class="chat-dialog_footer-attach-block popper">
         <ul>
@@ -105,9 +106,7 @@ export const template = `
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>
         </div>
         <textarea name="message" class="chat-dialog_footer-field" placeholder="{{textareaPlaceholder}}"></textarea>
-        <button class="button-primary button-circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-        </button>
+        {{{buttonEnter}}}
         </div>
     {{else}}
         <div class="chat-dialog_empty">

@@ -4,6 +4,37 @@ import { template } from "./template.js";
 
 import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
+import { Input } from '../../components/Input/Input.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dots = document.querySelector('.chat-dialog_header-dots');
+    const dotsBlock = document.querySelector('.chat-dialog_header-dots-block');
+    const addUser = document.getElementById('addUser');
+    const removeUser = document.getElementById('removeUser');
+    const modal = document.querySelector('.js-modal');
+    const attach = document.querySelector('.chat-dialog_footer-attach');
+    const attachBlock = document.querySelector('.chat-dialog_footer-attach-block');
+
+    // при клике на dots показать / скрыть popper и поменять цвет
+    dots?.addEventListener('click', () => {
+        dotsBlock?.classList.toggle("attach_is-open");
+        dots?.classList.toggle("attach_is-open");
+
+    })
+    // Придумаю что-нибудь получше, когда время будет =)
+    addUser?.addEventListener('click', () => {
+        modal?.classList.toggle("is-open-modal");
+    })
+    removeUser?.addEventListener('click', () => {
+        modal?.classList.toggle("is-open-modal");
+    })
+    // при клике на attach показать / скрыть popper и поменять цвет
+    attach?.addEventListener('click', () => {
+        // modal?.classList.toggle("is-open-modal");
+        attachBlock?.classList.toggle("attach_is-open");
+        attach.classList.toggle("attach_is-open");
+    })
+})
 
 const data = {
     profile: 'Профиль',
@@ -63,12 +94,17 @@ const data = {
     ],
     modal: new Modal({
         title: 'Удалить пользователя',
-        label: 'Логин',
-        classForLabel: 'form-input_placeholder',
+        input: new Input({
+            label: 'Логин',
+        }).render(),
         button: new Button({
             text: 'Удалить',
             type: 'text'
         }).render(),
+    }).render(),
+    buttonEnter: new Button({
+        isCircle: true,
+        class: 'button-circle',
     }).render(),
 }
 

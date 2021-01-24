@@ -404,10 +404,17 @@ main > div {
     margin-bottom: 40px;
 }
 
+.form .form-input_wrapper, .modal .form-input_wrapper {
+    margin-bottom: 16px;
+}
+
+.form .form-input_wrapper input, .modal .form-input_wrapper input {
+    height: 30px;
+}
+
 .form-input_wrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 16px;
     text-align: left;
 }
 
@@ -424,7 +431,6 @@ main > div {
     border-bottom: 1px solid #3369F3;
     outline: none;
     padding: 0;
-    height: 30px;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
@@ -1086,7 +1092,7 @@ main > div {
 
 .profile-image_input input {
     visibility: hidden;
-    height: 0;
+    height: 0 !important;
 }
 
 .profile-image_hint {
@@ -1103,4 +1109,8 @@ main > div {
 
 .show-hint {
     display: inline-block;
+}
+
+input:invalid {
+    border-color: red;
 }

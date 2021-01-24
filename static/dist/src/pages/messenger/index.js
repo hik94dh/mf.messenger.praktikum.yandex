@@ -3,6 +3,34 @@ import { render } from '../../utils/render.js';
 import { template } from "./template.js";
 import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
+import { Input } from '../../components/Input/Input.js';
+document.addEventListener('DOMContentLoaded', () => {
+    const dots = document.querySelector('.chat-dialog_header-dots');
+    const dotsBlock = document.querySelector('.chat-dialog_header-dots-block');
+    const addUser = document.getElementById('addUser');
+    const removeUser = document.getElementById('removeUser');
+    const modal = document.querySelector('.js-modal');
+    const attach = document.querySelector('.chat-dialog_footer-attach');
+    const attachBlock = document.querySelector('.chat-dialog_footer-attach-block');
+    // при клике на dots показать / скрыть popper и поменять цвет
+    dots === null || dots === void 0 ? void 0 : dots.addEventListener('click', () => {
+        dotsBlock === null || dotsBlock === void 0 ? void 0 : dotsBlock.classList.toggle("attach_is-open");
+        dots === null || dots === void 0 ? void 0 : dots.classList.toggle("attach_is-open");
+    });
+    // Придумаю что-нибудь получше, когда время будет =)
+    addUser === null || addUser === void 0 ? void 0 : addUser.addEventListener('click', () => {
+        modal === null || modal === void 0 ? void 0 : modal.classList.toggle("is-open-modal");
+    });
+    removeUser === null || removeUser === void 0 ? void 0 : removeUser.addEventListener('click', () => {
+        modal === null || modal === void 0 ? void 0 : modal.classList.toggle("is-open-modal");
+    });
+    // при клике на attach показать / скрыть popper и поменять цвет
+    attach === null || attach === void 0 ? void 0 : attach.addEventListener('click', () => {
+        // modal?.classList.toggle("is-open-modal");
+        attachBlock === null || attachBlock === void 0 ? void 0 : attachBlock.classList.toggle("attach_is-open");
+        attach.classList.toggle("attach_is-open");
+    });
+});
 const data = {
     profile: 'Профиль',
     searchPlaceholder: 'Поиск',
@@ -61,12 +89,17 @@ const data = {
     ],
     modal: new Modal({
         title: 'Удалить пользователя',
-        label: 'Логин',
-        classForLabel: 'form-input_placeholder',
+        input: new Input({
+            label: 'Логин',
+        }).render(),
         button: new Button({
             text: 'Удалить',
             type: 'text'
         }).render(),
+    }).render(),
+    buttonEnter: new Button({
+        isCircle: true,
+        class: 'button-circle',
     }).render(),
 };
 export default class Messenger extends Block {

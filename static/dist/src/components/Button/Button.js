@@ -1,8 +1,8 @@
-import Block from '../../modules/block.js';
-const template = `<button type="{{type}}" class="button-primary {{class}}">{{text}}</button>`;
-export class Button extends Block {
+import BlockComponent from '../../modules/block.js';
+import { buttonTemplate } from './template.js';
+export class Button extends BlockComponent {
     constructor(props) {
-        super(template, props);
+        super(buttonTemplate, props);
     }
     render() {
         return this.compile(this.props);

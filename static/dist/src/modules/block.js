@@ -43,10 +43,11 @@ export default class Block {
         return this._element;
     }
     _makePropsProxy(props) {
+        const self = this;
         return new Proxy(props, {
             set(target, prop, value) {
                 target[prop] = value;
-                // this.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+                self.eventBus().emit(Block.EVENTS.FLOW_CDU, self.props, target);
                 return true;
             },
             deleteProperty() {
