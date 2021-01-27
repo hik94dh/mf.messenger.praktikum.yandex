@@ -1,0 +1,20 @@
+.error-wrapper {
+    text-align: center;
+}
+
+.error-title {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #1E1E1E;
+}
+
+.error-desc {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #1E1E1E;
+    margin-bottom: 55px;
+}

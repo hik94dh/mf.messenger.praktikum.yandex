@@ -1,0 +1,33 @@
+.form {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 340px;
+    padding: 50px 30px 30px;
+    box-sizing: border-box;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #1E1E1E;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.form-buttons_wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form-buttons_wrapper a {
+    margin-top: 14px;
+}

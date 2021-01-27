@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formCollection.forEach(form => {
         form.addEventListener('submit', e => {
-            console.log('qweqweqwe')
             inputsCollection.forEach(input => {
                 e.preventDefault();
                 validation(input);
