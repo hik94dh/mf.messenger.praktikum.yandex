@@ -461,10 +461,6 @@ main > div {
     display: flex;
 }
 
-input:invalid {
-    border-color: red;
-}
-
 .form-input_wrapper input {
     border: none;
     border-bottom: 1px solid #3369F3;
@@ -497,4 +493,8 @@ input:invalid {
     display: flex;
     flex-direction: column;
     text-align: left;
+}
+
+.form-input_wrapper .input-error {
+    border-color: red;
 }

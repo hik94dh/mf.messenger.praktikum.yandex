@@ -2,10 +2,8 @@ import Block from '../../modules/block.js';
 import { render } from '../../utils/render.js';
 import { template } from './template.js';
 import { findInputsForValidation } from '../../modules/validation.js';
-
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
-
 const data = {
     title: "Регистрация",
     entry: "Войти",
@@ -61,20 +59,16 @@ const data = {
         },
     ],
 };
-
-
 export default class SignUp extends Block {
     constructor(props) {
         super(template, props);
     }
-
     componentDidMount() {
         return findInputsForValidation;
     }
-
-    render(): any {
-        return this.compile(data)
+    render() {
+        return this.compile(data);
     }
 }
-
 render("app", new SignUp(data));
+//# sourceMappingURL=index.js.map

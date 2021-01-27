@@ -1,6 +1,6 @@
-import Block from "../../modules/block.js";
+import Block from '../../modules/block.js';
 import { render } from '../../utils/render.js';
-import { template } from "./template.js";
+import { template } from './template.js';
 
 const data = {
     title: "404",

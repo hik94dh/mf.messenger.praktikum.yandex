@@ -2,62 +2,57 @@ import Block from '../../modules/block.js';
 import { render } from '../../utils/render.js';
 import { template } from './template.js';
 import { findInputsForValidation } from '../../modules/validation.js';
-
 import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
-
 const CHANGE_IMAGE_ID = 'changeImage';
 const CHANGE_IMAGE_INPUT_ID = 'changeImageInput';
 const CHANGE_IMAGE_BUTTON_ID = 'changeImageButton';
 const CHANGE_IMAGE_LABEL_ID = 'changeImageLabel';
 const BUTTON_BACK_ID = 'buttonBack';
 const LINK_ID = 'js-link';
-
 document.addEventListener('DOMContentLoaded', () => {
     const changeImage = document.getElementById(CHANGE_IMAGE_ID);
     const modal = document.querySelector('.js-modal');
-    const changeImageInput = <HTMLInputElement>document.getElementById(CHANGE_IMAGE_INPUT_ID);
+    const changeImageInput = document.getElementById(CHANGE_IMAGE_INPUT_ID);
     const changeImageButton = document.getElementById(CHANGE_IMAGE_BUTTON_ID);
     const changeImageHint = document.querySelector('.profile-image_hint');
-    const changeImageLabel = <HTMLInputElement>document.getElementById(CHANGE_IMAGE_LABEL_ID);
+    const changeImageLabel = document.getElementById(CHANGE_IMAGE_LABEL_ID);
     const modalTitle = document.querySelector('.js-modal-title');
     const buttonBack = document.getElementById(BUTTON_BACK_ID);
-
     // При клике на картинку открыть модалку
-    changeImage?.addEventListener('click', () => {
-        modal?.classList.toggle("is-open-modal");
+    changeImage === null || changeImage === void 0 ? void 0 : changeImage.addEventListener('click', () => {
+        modal === null || modal === void 0 ? void 0 : modal.classList.toggle("is-open-modal");
     });
-    changeImageInput?.addEventListener('change', e => {
-        const target = e.target as HTMLInputElement;
-        const file: File = (target.files as FileList)[0];
-
+    changeImageInput === null || changeImageInput === void 0 ? void 0 : changeImageInput.addEventListener('change', e => {
+        var _a;
+        const target = e.target;
+        const file = target.files[0];
         // Поменять title и label после загрузки файла
         if (file.name && modalTitle) {
             changeImageLabel.textContent = file.name;
             modalTitle.textContent = 'Файл загружен';
         }
         // Убрать подсказку, когда загрузили файл
-        if (changeImageInput?.files?.length) {
-            changeImageHint?.classList.remove("show-hint");
-        }
-    })
-    changeImageButton?.addEventListener('click', () => {
-        // При клике на кнопку показать подсказку, если ничего не загружено
-        if(!changeImageInput?.files?.length) {
-            changeImageHint?.classList.add("show-hint");
+        if ((_a = changeImageInput === null || changeImageInput === void 0 ? void 0 : changeImageInput.files) === null || _a === void 0 ? void 0 : _a.length) {
+            changeImageHint === null || changeImageHint === void 0 ? void 0 : changeImageHint.classList.remove("show-hint");
         }
     });
-    buttonBack?.addEventListener('click', () => {
-        window.history.back()
-    })
-})
-
+    changeImageButton === null || changeImageButton === void 0 ? void 0 : changeImageButton.addEventListener('click', () => {
+        var _a;
+        // При клике на кнопку показать подсказку, если ничего не загружено
+        if (!((_a = changeImageInput === null || changeImageInput === void 0 ? void 0 : changeImageInput.files) === null || _a === void 0 ? void 0 : _a.length)) {
+            changeImageHint === null || changeImageHint === void 0 ? void 0 : changeImageHint.classList.add("show-hint");
+        }
+    });
+    buttonBack === null || buttonBack === void 0 ? void 0 : buttonBack.addEventListener('click', () => {
+        window.history.back();
+    });
+});
 const data = {
     imageText: "Поменять аватар",
     changeImageId: CHANGE_IMAGE_ID,
     name: "Иван",
-
     dataList: [
         {
             left: 'Почта',
@@ -130,8 +125,6 @@ const data = {
             class: 'link-secondary',
         },
     ],
-
-
     changePasswordShow: false,
     changePasswordList: [
         {
@@ -159,7 +152,6 @@ const data = {
             }).render()
         },
     ],
-
     buttonBack: new Button({
         isCircle: true,
         class: 'button-circle',
@@ -190,43 +182,37 @@ const data = {
             id: CHANGE_IMAGE_BUTTON_ID
         }).render(),
     }).render(),
-}
-
+};
 export default class Profile extends Block {
     constructor(props) {
         super(template, props);
-
         this.clickLink();
     }
-
     componentDidMount() {
         return findInputsForValidation;
     }
-
-
     clickLink() {
         document.addEventListener('DOMContentLoaded', () => {
-            const linksCollection = document.querySelectorAll<HTMLInputElement>(`.${LINK_ID}`);
-
+            const linksCollection = document.querySelectorAll(`.${LINK_ID}`);
             linksCollection.forEach((link, number) => {
                 // При клике на ссылку скрыть их и заменить на кнопку
                 link.addEventListener('click', e => {
                     e.preventDefault();
-                    this.setProps({ linksShow: false })
+                    this.setProps({ linksShow: false });
                     if (number === 0) {
                         // При клике на первую ссылку убираем атрибут чтобы можно было ввести данные
-                        const inputsCollection = document.querySelectorAll<HTMLInputElement>('.js-input');
+                        const inputsCollection = document.querySelectorAll('.js-input');
                         inputsCollection.forEach(input => {
                             input.removeAttribute('readonly');
-                        })
+                        });
                     }
                     if (number === 1) {
-                        this.setProps({ changePasswordShow: true })
+                        this.setProps({ changePasswordShow: true });
                     }
-                })
-            })
-        })
+                });
+            });
+        });
     }
 }
-
 render("app", new Profile(data));
+//# sourceMappingURL=index.js.map
