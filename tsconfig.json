@@ -10,7 +10,7 @@
         "noUnusedParameters": true,
         "alwaysStrict": true,
         "lib": ["dom", "es6"],
-        "outDir": "static/dist"
+        "outDir": "static/js"
     },
     "include": ["src/**/*"],
 }
