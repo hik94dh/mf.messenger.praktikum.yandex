@@ -6,4 +6,4 @@ export const buttonTemplate = `
         {{text}}
     {{/if}}
     </button>
-`
+`;

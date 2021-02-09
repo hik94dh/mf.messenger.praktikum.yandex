@@ -13,4 +13,4 @@ export const template = `<div class="container">
                 </a>
             </div>
         </form>
-  </div>`
+  </div>`;

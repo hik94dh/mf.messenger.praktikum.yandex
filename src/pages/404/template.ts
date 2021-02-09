@@ -6,4 +6,4 @@ export const template = `<div class="container">
             {{link.text}}
         </a>
       </div>
-  </div>`
+  </div>`;

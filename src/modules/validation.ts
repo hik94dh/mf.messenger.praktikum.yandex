@@ -5,55 +5,54 @@ const checkText = /^([A-Za-zА-Яа-я]){2,10}$/;
 const checkPass = /^((?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})$/; // example Test1234!$
 
 const validation = {
-    email: checkEmail,
-    login: checkLogin,
-    first_name: checkText,
-    second_name: checkText,
-    phone: checkPhone,
-    password: checkPass,
-    newPassword: checkPass,
-    oldPassword: checkPass,
-}
+	email: checkEmail,
+	login: checkLogin,
+	first_name: checkText,
+	second_name: checkText,
+	phone: checkPhone,
+	password: checkPass,
+	newPassword: checkPass,
+	oldPassword: checkPass,
+};
 
 export const checkValidation = (input) => {
-    const showResult = isCheck => {
-        input.classList.remove('input-error')
-        if(!isCheck) {
-            console.log(`Валидация не пройдена в ${input.name}`)
-            input.classList.add('input-error')
-        }
-    }
+	const showResult = (isCheck) => {
+		input.classList.remove('input-error');
+		if (!isCheck) {
+			console.log(`Валидация не пройдена в ${input.name}`);
+			input.classList.add('input-error');
+		}
+	};
 
-    if(!input.hasAttribute('readonly')) {
-        if(!input.required) {
-            input.setAttribute('required', 'true')
-        }
+	if (!input.hasAttribute('readonly')) {
+		if (!input.required) {
+			input.setAttribute('required', 'true');
+		}
 
-        // смотрим на name у инпута и применяем нужную валидацию из validation
-        showResult(validation[input.getAttribute('name')]?.test(input.value));
-    }
-}
-
+		// смотрим на name у инпута и применяем нужную валидацию из validation
+		showResult(validation[input.getAttribute('name')]?.test(input.value));
+	}
+};
 
 export const findInputsForValidation = document.addEventListener('DOMContentLoaded', () => {
-    const formCollection = Array.from(document.getElementsByTagName('form'));
-    const inputsCollection = document.querySelectorAll<HTMLInputElement>('.js-input');
+	const formCollection = Array.from(document.getElementsByTagName('form'));
+	const inputsCollection = document.querySelectorAll<HTMLInputElement>('.js-input');
 
-    inputsCollection.forEach(input => {
-        input.addEventListener('focus', () => {
-            checkValidation(input);
-        })
-        input.addEventListener('blur', () => {
-            checkValidation(input);
-        })
-    })
+	inputsCollection.forEach((input) => {
+		input.addEventListener('focus', () => {
+			checkValidation(input);
+		});
+		input.addEventListener('blur', () => {
+			checkValidation(input);
+		});
+	});
 
-    formCollection.forEach(form => {
-        form.addEventListener('submit', e => {
-            inputsCollection.forEach(input => {
-                e.preventDefault();
-                checkValidation(input);
-            })
-        })
-    })
-})
+	formCollection.forEach((form) => {
+		form.addEventListener('submit', (e) => {
+			inputsCollection.forEach((input) => {
+				e.preventDefault();
+				checkValidation(input);
+			});
+		});
+	});
+});

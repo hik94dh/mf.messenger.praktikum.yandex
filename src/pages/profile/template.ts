@@ -35,4 +35,4 @@ export const template = `<div class="container">
         </div>
     </div>
     {{{modal}}}
-  </div>`
+  </div>`;

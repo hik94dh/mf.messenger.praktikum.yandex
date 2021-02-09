@@ -12,4 +12,4 @@ export const modalTemplate = `
             </form>
         </div>
     </div>
-`
+`;

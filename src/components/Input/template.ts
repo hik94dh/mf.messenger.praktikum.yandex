@@ -13,4 +13,4 @@ export const inputTemplate = `
         {{attr}}
     >
 </div>
-`
+`;

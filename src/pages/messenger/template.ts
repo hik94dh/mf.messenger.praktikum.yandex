@@ -117,4 +117,4 @@ export const template = `
 </div>
 {{{modal}}}
 
-`
+`;

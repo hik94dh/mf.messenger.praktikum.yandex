@@ -1,27 +1,33 @@
 {
-  "name": "mf.messenger.praktikum.yandex",
-  "version": "1.0.0",
-  "description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
-  "main": "server.js",
-  "scripts": {
-    "build": "node server.js",
-    "publish": "node server.js",
-    "tsc": "tsc --build ./tsconfig.json",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hik94dh/mf.messenger.praktikum.yandex.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hik94dh/mf.messenger.praktikum.yandex/issues"
-  },
-  "homepage": "https://github.com/hik94dh/mf.messenger.praktikum.yandex#readme",
-  "dependencies": {
-    "express": "4.17.1",
-    "handlebars": "4.7.6",
-    "typescript": "4.1.3"
-  }
+	"name": "mf.messenger.praktikum.yandex",
+	"version": "1.0.0",
+	"description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
+	"main": "server.js",
+	"scripts": {
+		"build": "node server.js",
+		"build:styles": "sass ./src/styles/index.scss ./static/assets/css/styles.css",
+		"publish": "node server.js",
+		"tsc": "tsc --build ./tsconfig.json",
+		"start": "node server.js",
+		"pretty": "npx prettier --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/hik94dh/mf.messenger.praktikum.yandex.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/hik94dh/mf.messenger.praktikum.yandex/issues"
+	},
+	"homepage": "https://github.com/hik94dh/mf.messenger.praktikum.yandex#readme",
+	"dependencies": {
+		"express": "4.17.1",
+		"handlebars": "4.7.6",
+		"sass": "1.32.6",
+		"typescript": "4.1.3"
+	},
+	"devDependencies": {
+		"prettier": "2.2.1"
+	}
 }
