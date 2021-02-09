@@ -1,9 +1,7 @@
 $var1: #3369f3;
-$var2: #ffffff;
-$var3: #ff0000;
-$var4: #000000;
-$var5: #1e1e1e;
-$var6: #999999;
+$var2: #ff0000;
+$var3: #1e1e1e;
+$var4: #999999;
 
 body {
 	height: 100vh;
@@ -28,21 +26,7 @@ main {
 	height: inherit;
 	width: 100%;
 }
-.button-primary {
-	background: $var1;
-	border-radius: 8px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	font-weight: 500;
-	font-size: 13px;
-	line-height: 13px;
-	text-align: center;
-	color: $var2;
-	width: 100%;
-	padding: 12px 0;
-	max-width: 280px;
-}
+
 .link-primary {
 	font-weight: 500;
 	font-size: 11px;
@@ -53,54 +37,9 @@ main {
 	display: inline-block;
 }
 .link-secondary {
-	color: $var3;
+	color: $var2;
 }
-.button-circle {
-	width: 29px;
-	height: 29px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.modal-wrapper {
-	z-index: 10;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	inset: 0;
-}
-.modal-backdrop {
-	position: fixed;
-	background: $var4;
-	opacity: 0.4;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	z-index: -1;
-}
-.modal {
-	background: $var2;
-	box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
-	border-radius: 12px;
-	width: 340px;
-	text-align: center;
-	padding: 40px 30px;
-	box-sizing: border-box;
-	position: relative;
-	&-title {
-		margin-top: 0;
-		margin-bottom: 50px;
-		font-weight: 500;
-		font-size: 15px;
-		line-height: 20px;
-	}
-}
-.is-open-modal {
-	display: flex;
-}
+
 .form-input_wrapper input {
 	border: none;
 	border-bottom: 1px solid $var1;
@@ -110,14 +49,14 @@ main {
 	font-size: 13px;
 	line-height: 13px;
 	font-style: normal;
-	color: $var5;
+	color: $var3;
 }
 .form-input_placeholder {
 	font-style: normal;
 	font-weight: 500;
 	font-size: 9px;
 	line-height: 9px;
-	color: $var6;
+	color: $var4;
 }
 .form .form-input_wrapper,
 .modal .form-input_wrapper {
