@@ -1,7 +1,7 @@
 export const template = `
 <div class="chat-page_wrapper">
     <div class="sidebar_wrapper">
-        <a href="profile.html" class="sidebar-link">{{profile}}</a>
+        <a href="profile" class="sidebar-link">{{profile}}</a>
         <div class="sidebar-search">
             <input type="text" placeholder="{{searchPlaceholder}}">
         </div>

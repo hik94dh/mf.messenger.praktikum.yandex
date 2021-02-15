@@ -1,5 +1,4 @@
 import Block from '../../modules/block.js';
-import { render } from '../../utils/render.js';
 import { template } from './template.js';
 import { findInputsForValidation } from '../../modules/validation.js';
 
@@ -125,7 +124,7 @@ const data = {
 			class: LINK_ID,
 		},
 		{
-			href: 'index.html',
+			href: '/',
 			text: 'Выйти',
 			class: 'link-secondary',
 		},
@@ -227,4 +226,4 @@ export default class Profile extends Block {
 	}
 }
 
-render('app', new Profile(data));
+export const profile = new Profile(data);

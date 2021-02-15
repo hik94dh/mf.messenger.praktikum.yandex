@@ -62,7 +62,7 @@ export default class Block {
 		this._element.innerHTML = this.render();
 	}
 
-	render() {
+	render(): string {
 		return this.compile(this.props);
 	}
 

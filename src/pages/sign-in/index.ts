@@ -1,5 +1,4 @@
 import Block from '../../modules/block.js';
-import { render } from '../../utils/render.js';
 import { template } from './template.js';
 import { findInputsForValidation } from '../../modules/validation.js';
 
@@ -10,7 +9,7 @@ const data = {
 	title: 'Вход',
 	link: {
 		text: 'Нет аккаунта?',
-		href: 'sign-up.html',
+		href: 'sign-up',
 	},
 	inputs: [
 		{
@@ -41,4 +40,4 @@ export default class SignIn extends Block {
 	}
 }
 
-render('app', new SignIn(data));
+export const signIn = new SignIn(data);

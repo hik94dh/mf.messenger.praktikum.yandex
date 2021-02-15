@@ -1,5 +1,4 @@
 import Block from '../../modules/block.js';
-import { render } from '../../utils/render.js';
 import { template } from './template.js';
 import { findInputsForValidation } from '../../modules/validation.js';
 import { Modal } from '../../components/Modal/Modal.js';
@@ -122,5 +121,5 @@ export default class Messenger extends Block {
 		return findInputsForValidation;
 	}
 }
-render('app', new Messenger(data));
+export const messenger = new Messenger(data);
 //# sourceMappingURL=index.js.map

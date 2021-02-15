@@ -1,5 +1,4 @@
 import Block from '../../modules/block.js';
-import { render } from '../../utils/render.js';
 import { template } from './template.js';
 import { findInputsForValidation } from '../../modules/validation.js';
 
@@ -119,4 +118,4 @@ export default class Messenger extends Block {
 	}
 }
 
-render('app', new Messenger(data));
+export const messenger = new Messenger(data);

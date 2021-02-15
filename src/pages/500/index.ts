@@ -1,5 +1,4 @@
 import Block from '../../modules/block.js';
-import { render } from '../../utils/render.js';
 import { template } from './template.js';
 
 const data = {
@@ -7,7 +6,7 @@ const data = {
 	desc: 'Мы уже фиксим',
 	link: {
 		text: 'Назад к чатам',
-		href: 'messenger.html',
+		href: 'messenger',
 	},
 };
 
@@ -17,4 +16,4 @@ export default class Page500 extends Block {
 	}
 }
 
-render('app', new Page500(data));
+export const page500 = new Page500(data);
