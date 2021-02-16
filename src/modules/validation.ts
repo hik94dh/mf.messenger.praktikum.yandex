@@ -48,9 +48,14 @@ export const findInputsForValidation = document.addEventListener('DOMContentLoad
 	});
 
 	formCollection.forEach((form) => {
-		form.addEventListener('submit', (e) => {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			// XSS обработка
+			if (event.srcElement[0].value.includes('href')) {
+				return;
+			}
 			inputsCollection.forEach((input) => {
-				e.preventDefault();
 				checkValidation(input);
 			});
 		});
