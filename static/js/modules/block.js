@@ -56,14 +56,22 @@ export default class Block {
 		this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
 	}
 	componentDidMount() {}
+	addEventsAfterUpdate() {}
 	_componentDidUpdate(oldProps, newProps) {
 		const response = this.componentDidUpdate(oldProps, newProps);
 		if (response) {
 			this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+			this.addEventsAfterUpdate();
 		}
 	}
 	componentDidUpdate(oldProps, newProps) {
 		return oldProps !== newProps;
+	}
+	show() {
+		this._element.style.display = 'block';
+	}
+	hide() {
+		this._element.style.display = 'none';
 	}
 }
 Block.EVENTS = {

@@ -6,34 +6,8 @@ import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-	const dots = document.querySelector('.chat-dialog_header-dots');
-	const dotsBlock = document.querySelector('.chat-dialog_header-dots-block');
-	const addUser = document.getElementById('addUser');
-	const removeUser = document.getElementById('removeUser');
-	const modal = document.querySelector('.js-modal');
-	const attach = document.querySelector('.chat-dialog_footer-attach');
-	const attachBlock = document.querySelector('.chat-dialog_footer-attach-block');
-
-	// при клике на dots показать / скрыть popper и поменять цвет
-	dots?.addEventListener('click', () => {
-		dotsBlock?.classList.toggle('attach_is-open');
-		dots?.classList.toggle('attach_is-open');
-	});
-	// Придумаю что-нибудь получше, когда время будет =)
-	addUser?.addEventListener('click', () => {
-		modal?.classList.toggle('is-open-modal');
-	});
-	removeUser?.addEventListener('click', () => {
-		modal?.classList.toggle('is-open-modal');
-	});
-	// при клике на attach показать / скрыть popper и поменять цвет
-	attach?.addEventListener('click', () => {
-		// modal?.classList.toggle("is-open-modal");
-		attachBlock?.classList.toggle('attach_is-open');
-		attach.classList.toggle('attach_is-open');
-	});
-});
+import ChatsApi from '../../api/chatsApi.js';
+import { MESSENGER_PATH } from '../../routes/constants.js';
 
 const data = {
 	profile: 'Профиль',
@@ -111,11 +85,51 @@ const data = {
 export default class Messenger extends Block {
 	constructor(props) {
 		super(template, props);
+
+		this.addEvents();
+	}
+
+	messengerEvents() {
+		const dots = document.querySelector('.chat-dialog_header-dots');
+		const dotsBlock = document.querySelector('.chat-dialog_header-dots-block');
+		const addUser = document.getElementById('addUser');
+		const removeUser = document.getElementById('removeUser');
+		const modal = document.querySelector('.js-modal');
+		const attach = document.querySelector('.chat-dialog_footer-attach');
+		const attachBlock = document.querySelector('.chat-dialog_footer-attach-block');
+
+		// при клике на dots показать / скрыть popper и поменять цвет
+		dots?.addEventListener('click', () => {
+			dotsBlock?.classList.toggle('attach_is-open');
+			dots?.classList.toggle('attach_is-open');
+		});
+		addUser?.addEventListener('click', () => {
+			modal?.classList.toggle('is-open-modal');
+		});
+		removeUser?.addEventListener('click', () => {
+			modal?.classList.toggle('is-open-modal');
+		});
+		// при клике на attach показать / скрыть popper и поменять цвет
+		attach?.addEventListener('click', () => {
+			// modal?.classList.toggle("is-open-modal");
+			attachBlock?.classList.toggle('attach_is-open');
+			attach.classList.toggle('attach_is-open');
+		});
+	}
+
+	addEvents() {
+		document.addEventListener('DOMContentLoaded', () => {
+			this.messengerEvents();
+		});
 	}
 
 	componentDidMount() {
+		if (document.location.pathname === MESSENGER_PATH) {
+			ChatsApi.getChats();
+		}
+
 		return findInputsForValidation;
 	}
 }
 
-export const messenger = new Messenger(data);
+export const messengerPage = new Messenger(data);

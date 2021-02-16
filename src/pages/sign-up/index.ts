@@ -5,6 +5,10 @@ import { findInputsForValidation } from '../../modules/validation.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
 
+import AuthApi from '../../api/authApi.js';
+
+const BUTTON_ID = 'signUpButton';
+
 const data = {
 	title: 'Регистрация',
 	entry: 'Войти',
@@ -14,6 +18,7 @@ const data = {
 	},
 	button: new Button({
 		text: 'Зарегистрироваться',
+		id: BUTTON_ID,
 	}).render(),
 	inputs: [
 		{
@@ -64,6 +69,25 @@ const data = {
 export default class SignUp extends Block {
 	constructor(props) {
 		super(template, props);
+
+		this.onClick();
+	}
+
+	onClick() {
+		document.addEventListener('DOMContentLoaded', () => {
+			const button = document.getElementById(BUTTON_ID);
+
+			button?.addEventListener('click', () => {
+				AuthApi.signUp({
+					first_name: 'string',
+					second_name: 'string',
+					login: 'Login',
+					email: 'string@test.ru',
+					password: 'string',
+					phone: '+712345678',
+				});
+			});
+		});
 	}
 
 	componentDidMount() {
@@ -75,4 +99,4 @@ export default class SignUp extends Block {
 	}
 }
 
-export const signUp = new SignUp(data);
+export const signUpPage = new SignUp(data);

@@ -6,51 +6,16 @@ import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
 
+import AuthApi from '../../api/authApi.js';
+import { PROFILE_PATH, MAIN_PATH } from '../../routes/constants.js';
+
 const CHANGE_IMAGE_ID = 'changeImage';
 const CHANGE_IMAGE_INPUT_ID = 'changeImageInput';
 const CHANGE_IMAGE_BUTTON_ID = 'changeImageButton';
 const CHANGE_IMAGE_LABEL_ID = 'changeImageLabel';
 const BUTTON_BACK_ID = 'buttonBack';
 const LINK_ID = 'js-link';
-
-document.addEventListener('DOMContentLoaded', () => {
-	const changeImage = document.getElementById(CHANGE_IMAGE_ID);
-	const modal = document.querySelector('.js-modal');
-	const changeImageInput = <HTMLInputElement>document.getElementById(CHANGE_IMAGE_INPUT_ID);
-	const changeImageButton = document.getElementById(CHANGE_IMAGE_BUTTON_ID);
-	const changeImageHint = document.querySelector('.profile-image_hint');
-	const changeImageLabel = <HTMLInputElement>document.getElementById(CHANGE_IMAGE_LABEL_ID);
-	const modalTitle = document.querySelector('.js-modal-title');
-	const buttonBack = document.getElementById(BUTTON_BACK_ID);
-
-	// При клике на картинку открыть модалку
-	changeImage?.addEventListener('click', () => {
-		modal?.classList.toggle('is-open-modal');
-	});
-	changeImageInput?.addEventListener('change', (e) => {
-		const target = e.target as HTMLInputElement;
-		const file: File = (target.files as FileList)[0];
-
-		// Поменять title и label после загрузки файла
-		if (file.name && modalTitle) {
-			changeImageLabel.textContent = file.name;
-			modalTitle.textContent = 'Файл загружен';
-		}
-		// Убрать подсказку, когда загрузили файл
-		if (changeImageInput?.files?.length) {
-			changeImageHint?.classList.remove('show-hint');
-		}
-	});
-	changeImageButton?.addEventListener('click', () => {
-		// При клике на кнопку показать подсказку, если ничего не загружено
-		if (!changeImageInput?.files?.length) {
-			changeImageHint?.classList.add('show-hint');
-		}
-	});
-	buttonBack?.addEventListener('click', () => {
-		window.history.back();
-	});
-});
+const LINK_LOGOUT_ID = 'js-link-logout';
 
 const data = {
 	imageText: 'Поменять аватар',
@@ -126,7 +91,7 @@ const data = {
 		{
 			href: '/',
 			text: 'Выйти',
-			class: 'link-secondary',
+			class: `link-secondary ${LINK_LOGOUT_ID}`,
 		},
 	],
 
@@ -198,12 +163,70 @@ export default class Profile extends Block {
 	}
 
 	componentDidMount() {
+		if (document.location.pathname === PROFILE_PATH) {
+			AuthApi.user().then(({ response, status }) => {
+				if (status === 200) {
+					const data = JSON.parse(response);
+					console.log('obj', data);
+				}
+			});
+		}
+
 		return findInputsForValidation;
+	}
+
+	profileEvents() {
+		const changeImage = document.getElementById(CHANGE_IMAGE_ID);
+		const modal = document.querySelector('.js-modal');
+		const changeImageInput = <HTMLInputElement>document.getElementById(CHANGE_IMAGE_INPUT_ID);
+		const changeImageButton = document.getElementById(CHANGE_IMAGE_BUTTON_ID);
+		const changeImageHint = document.querySelector('.profile-image_hint');
+		const changeImageLabel = <HTMLInputElement>document.getElementById(CHANGE_IMAGE_LABEL_ID);
+		const modalTitle = document.querySelector('.js-modal-title');
+		const buttonBack = document.getElementById(BUTTON_BACK_ID);
+		const modalBackdrop = document.querySelector('.js-modal-backdrop');
+
+		// При клике на картинку открыть модалку
+		changeImage?.addEventListener('click', () => {
+			modal?.classList.toggle('is-open-modal');
+		});
+		changeImageInput?.addEventListener('change', (e) => {
+			const target = e.target as HTMLInputElement;
+			const file: File = (target.files as FileList)[0];
+
+			// Поменять title и label после загрузки файла
+			if (file.name && modalTitle) {
+				changeImageLabel.textContent = file.name;
+				modalTitle.textContent = 'Файл загружен';
+			}
+			// Убрать подсказку, когда загрузили файл
+			if (changeImageInput?.files?.length) {
+				changeImageHint?.classList.remove('show-hint');
+			}
+		});
+		changeImageButton?.addEventListener('click', () => {
+			// При клике на кнопку показать подсказку, если ничего не загружено
+			if (!changeImageInput?.files?.length) {
+				changeImageHint?.classList.add('show-hint');
+			}
+		});
+		buttonBack?.addEventListener('click', () => {
+			window.history.back();
+		});
+		modalBackdrop?.addEventListener('click', () => {
+			modal?.classList.toggle('is-open-modal');
+		});
+	}
+
+	addEventsAfterUpdate() {
+		this.profileEvents();
 	}
 
 	clickLink() {
 		document.addEventListener('DOMContentLoaded', () => {
+			this.profileEvents();
 			const linksCollection = document.querySelectorAll<HTMLInputElement>(`.${LINK_ID}`);
+			const linkLogout = document.querySelector(`.${LINK_LOGOUT_ID}`);
 
 			linksCollection.forEach((link, number) => {
 				// При клике на ссылку скрыть их и заменить на кнопку
@@ -222,8 +245,17 @@ export default class Profile extends Block {
 					}
 				});
 			});
+			linkLogout?.addEventListener('click', e => {
+				e.preventDefault()
+				AuthApi.logout().then(({ status }) => {
+					if(status === 200) {
+						window.history.pushState({}, '', MAIN_PATH);
+						document.location.reload();
+					}
+				})
+			});
 		});
 	}
 }
 
-export const profile = new Profile(data);
+export const profilePage = new Profile(data);

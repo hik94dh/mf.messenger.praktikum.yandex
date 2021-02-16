@@ -4,43 +4,8 @@ import { findInputsForValidation } from '../../modules/validation.js';
 import { Modal } from '../../components/Modal/Modal.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
-document.addEventListener('DOMContentLoaded', () => {
-	const dots = document.querySelector('.chat-dialog_header-dots');
-	const dotsBlock = document.querySelector('.chat-dialog_header-dots-block');
-	const addUser = document.getElementById('addUser');
-	const removeUser = document.getElementById('removeUser');
-	const modal = document.querySelector('.js-modal');
-	const attach = document.querySelector('.chat-dialog_footer-attach');
-	const attachBlock = document.querySelector('.chat-dialog_footer-attach-block');
-	// при клике на dots показать / скрыть popper и поменять цвет
-	dots === null || dots === void 0
-		? void 0
-		: dots.addEventListener('click', () => {
-				dotsBlock === null || dotsBlock === void 0 ? void 0 : dotsBlock.classList.toggle('attach_is-open');
-				dots === null || dots === void 0 ? void 0 : dots.classList.toggle('attach_is-open');
-		  });
-	// Придумаю что-нибудь получше, когда время будет =)
-	addUser === null || addUser === void 0
-		? void 0
-		: addUser.addEventListener('click', () => {
-				modal === null || modal === void 0 ? void 0 : modal.classList.toggle('is-open-modal');
-		  });
-	removeUser === null || removeUser === void 0
-		? void 0
-		: removeUser.addEventListener('click', () => {
-				modal === null || modal === void 0 ? void 0 : modal.classList.toggle('is-open-modal');
-		  });
-	// при клике на attach показать / скрыть popper и поменять цвет
-	attach === null || attach === void 0
-		? void 0
-		: attach.addEventListener('click', () => {
-				// modal?.classList.toggle("is-open-modal");
-				attachBlock === null || attachBlock === void 0
-					? void 0
-					: attachBlock.classList.toggle('attach_is-open');
-				attach.classList.toggle('attach_is-open');
-		  });
-});
+import ChatsApi from '../../api/chatsApi.js';
+import { MESSENGER_PATH } from '../../routes/constants.js';
 const data = {
 	profile: 'Профиль',
 	searchPlaceholder: 'Поиск',
@@ -116,10 +81,55 @@ const data = {
 export default class Messenger extends Block {
 	constructor(props) {
 		super(template, props);
+		this.addEvents();
+	}
+	messengerEvents() {
+		const dots = document.querySelector('.chat-dialog_header-dots');
+		const dotsBlock = document.querySelector('.chat-dialog_header-dots-block');
+		const addUser = document.getElementById('addUser');
+		const removeUser = document.getElementById('removeUser');
+		const modal = document.querySelector('.js-modal');
+		const attach = document.querySelector('.chat-dialog_footer-attach');
+		const attachBlock = document.querySelector('.chat-dialog_footer-attach-block');
+		// при клике на dots показать / скрыть popper и поменять цвет
+		dots === null || dots === void 0
+			? void 0
+			: dots.addEventListener('click', () => {
+					dotsBlock === null || dotsBlock === void 0 ? void 0 : dotsBlock.classList.toggle('attach_is-open');
+					dots === null || dots === void 0 ? void 0 : dots.classList.toggle('attach_is-open');
+			  });
+		addUser === null || addUser === void 0
+			? void 0
+			: addUser.addEventListener('click', () => {
+					modal === null || modal === void 0 ? void 0 : modal.classList.toggle('is-open-modal');
+			  });
+		removeUser === null || removeUser === void 0
+			? void 0
+			: removeUser.addEventListener('click', () => {
+					modal === null || modal === void 0 ? void 0 : modal.classList.toggle('is-open-modal');
+			  });
+		// при клике на attach показать / скрыть popper и поменять цвет
+		attach === null || attach === void 0
+			? void 0
+			: attach.addEventListener('click', () => {
+					// modal?.classList.toggle("is-open-modal");
+					attachBlock === null || attachBlock === void 0
+						? void 0
+						: attachBlock.classList.toggle('attach_is-open');
+					attach.classList.toggle('attach_is-open');
+			  });
+	}
+	addEvents() {
+		document.addEventListener('DOMContentLoaded', () => {
+			this.messengerEvents();
+		});
 	}
 	componentDidMount() {
+		if (document.location.pathname === MESSENGER_PATH) {
+			ChatsApi.getChats();
+		}
 		return findInputsForValidation;
 	}
 }
-export const messenger = new Messenger(data);
+export const messengerPage = new Messenger(data);
 //# sourceMappingURL=index.js.map

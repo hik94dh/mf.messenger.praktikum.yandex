@@ -5,6 +5,11 @@ import { findInputsForValidation } from '../../modules/validation.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
 
+import AuthApi from '../../api/authApi.js';
+import { MESSENGER_PATH } from '../../routes/constants.js';
+
+const BUTTON_ID = 'signInButton';
+
 const data = {
 	title: 'Вход',
 	link: {
@@ -27,12 +32,41 @@ const data = {
 	],
 	button: new Button({
 		text: 'Авторизоваться',
+		id: BUTTON_ID,
 	}).render(),
 };
+
+interface Prop {
+	[items: string]: unknown;
+}
 
 export default class SignIn extends Block {
 	constructor(props) {
 		super(template, props);
+
+		this.onClick();
+	}
+
+	onClick() {
+		document.addEventListener('DOMContentLoaded', () => {
+			const button = document.getElementById(BUTTON_ID);
+
+			button?.addEventListener('click', () => {
+				AuthApi.signIn({
+					login: 'Login',
+					password: 'string',
+				})
+					.then((res: Prop) => {
+						if (res.status === 200) {
+							window.history.pushState({}, '', MESSENGER_PATH);
+							document.location.reload();
+						}
+					})
+					.catch((err) => {
+						throw err;
+					});
+			});
+		});
 	}
 
 	componentDidMount() {
@@ -40,4 +74,4 @@ export default class SignIn extends Block {
 	}
 }
 
-export const signIn = new SignIn(data);
+export const signInPage = new SignIn(data);
