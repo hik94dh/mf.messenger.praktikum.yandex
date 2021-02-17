@@ -230,7 +230,7 @@ export default class Profile extends Block {
                     }
                 });
             });
-            linkLogout === null || linkLogout === void 0 ? void 0 : linkLogout.addEventListener('click', e => {
+            linkLogout === null || linkLogout === void 0 ? void 0 : linkLogout.addEventListener('click', (e) => {
                 e.preventDefault();
                 AuthApi.logout().then(({ status }) => {
                     if (status === 200) {

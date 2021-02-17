@@ -245,14 +245,14 @@ export default class Profile extends Block {
 					}
 				});
 			});
-			linkLogout?.addEventListener('click', e => {
-				e.preventDefault()
+			linkLogout?.addEventListener('click', (e) => {
+				e.preventDefault();
 				AuthApi.logout().then(({ status }) => {
-					if(status === 200) {
+					if (status === 200) {
 						window.history.pushState({}, '', MAIN_PATH);
 						document.location.reload();
 					}
-				})
+				});
 			});
 		});
 	}
