@@ -1,6 +1,6 @@
 import Block from '../../modules/block.js';
 import { template } from './template.js';
-import { findInputsForValidation } from '../../modules/validation.js';
+import { findInputsForValidation } from '../../utils/validation.js';
 
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';
