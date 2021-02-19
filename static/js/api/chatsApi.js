@@ -1,9 +1,8 @@
-import BaseApi from './baseApi.js';
 import { HTTPTransport } from './httpTransport.js';
 const headers = {
     'Content-type': 'application/json',
 };
-export default class ChatsApi extends BaseApi {
+export default class ChatsApi {
     static getChats() {
         return new HTTPTransport().get('/chats', { headers });
     }

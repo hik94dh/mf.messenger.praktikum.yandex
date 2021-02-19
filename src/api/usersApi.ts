@@ -1,11 +1,10 @@
-import BaseApi from './baseApi.js';
 import { HTTPTransport } from './httpTransport.js';
 
 const headers = {
 	'Content-type': 'application/json',
 };
 
-export default class UsersApi extends BaseApi {
+export default class UsersApi {
 	static updateUserProfile(data) {
 		return new HTTPTransport().put('/user/profile', { data, headers });
 	}

@@ -1,9 +1,8 @@
-import BaseApi from './baseApi.js';
 import { HTTPTransport } from './httpTransport.js';
 const headers = {
     'Content-type': 'application/json',
 };
-export default class AuthApi extends BaseApi {
+export default class AuthApi {
     static signIn(data) {
         return new HTTPTransport().post('/auth/signin', { data, headers });
     }
