@@ -1,25 +1,31 @@
+// @ts-ignore
+import sinon from 'sinon';
 import { HTTPTransport } from './httpTransport';
 
 describe('HTTPTransport', () => {
 	const http = new HTTPTransport();
-	http.request = jest.fn().mockImplementation((url, options) => Promise.resolve({ url, options }));
-
 	const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+
+	beforeEach(function () {
+		this.xhr = sinon.useFakeXMLHttpRequest();
+
+		this.requests = [];
+		this.xhr.onCreate = function (xhr) {
+			this.requests.push(xhr);
+		}.bind(this);
+	});
+
+	afterEach(function () {
+		this.xhr.restore();
+	});
 
 	it('check method get', () => {
 		const URL = '/auth/user';
 		const METHOD = 'GET';
 
-		const result = {
-			url: `${BASE_URL}${URL}`,
-			options: {
-				method: METHOD,
-			},
-		};
-
-		const getApi = http.get(URL);
-
-		getApi.then((res) => expect(res).toEqual(result));
+		http.request = sinon.spy();
+		http.get(URL);
+		sinon.assert.calledWith(http.request, `${BASE_URL}${URL}`, { method: METHOD });
 	});
 
 	it('check method post', () => {
@@ -31,19 +37,9 @@ describe('HTTPTransport', () => {
 			password: 'string',
 		};
 
-		const result = {
-			url: `${BASE_URL}${URL}`,
-			options: {
-				data,
-				method: METHOD,
-			},
-		};
-
-		const getApi = http.post(URL, {
-			data,
-		});
-
-		getApi.then((res) => expect(res).toEqual(result));
+		http.request = sinon.spy();
+		http.post(URL, { data });
+		sinon.assert.calledWith(http.request, `${BASE_URL}${URL}`, { data, method: METHOD });
 	});
 
 	it('check method put', () => {
@@ -55,19 +51,9 @@ describe('HTTPTransport', () => {
 			chatId: 0,
 		};
 
-		const result = {
-			url: `${BASE_URL}${URL}`,
-			options: {
-				data,
-				method: METHOD,
-			},
-		};
-
-		const getApi = http.put(URL, {
-			data,
-		});
-
-		getApi.then((res) => expect(res).toEqual(result));
+		http.request = sinon.spy();
+		http.put(URL, { data });
+		sinon.assert.calledWith(http.request, `${BASE_URL}${URL}`, { data, method: METHOD });
 	});
 
 	it('check method delete', () => {
@@ -79,18 +65,8 @@ describe('HTTPTransport', () => {
 			chatId: 0,
 		};
 
-		const result = {
-			url: `${BASE_URL}${URL}`,
-			options: {
-				data,
-				method: METHOD,
-			},
-		};
-
-		const getApi = http.delete(URL, {
-			data,
-		});
-
-		getApi.then((res) => expect(res).toEqual(result));
+		http.request = sinon.spy();
+		http.delete(URL, { data });
+		sinon.assert.calledWith(http.request, `${BASE_URL}${URL}`, { data, method: METHOD });
 	});
 });
