@@ -1,5 +1,5 @@
 import Block from '../../modules/block';
-import { template } from './template';
+import template from './template.hbs';
 import { findInputsForValidation } from '../../utils/validation';
 
 import { Button } from '../../components/Button/Button';
@@ -94,8 +94,8 @@ export default class SignUp extends Block {
 		return findInputsForValidation;
 	}
 
-	render(): any {
-		return this.compile(data);
+	render(): string {
+		return template(this.props);
 	}
 }
 

@@ -1,12 +1,12 @@
 import BlockComponent from '../../modules/block';
-import { inputTemplate } from './template';
+import template from './template.hbs';
 
 export class Input extends BlockComponent {
 	constructor(props) {
-		super(inputTemplate, props);
+		super(template, props);
 	}
 
-	render(): any {
-		return this.compile(this.props);
+	render(): string {
+		return template(this.props);
 	}
 }

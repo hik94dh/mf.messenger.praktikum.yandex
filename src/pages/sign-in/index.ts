@@ -1,5 +1,5 @@
 import Block from '../../modules/block';
-import { template } from './template';
+import template from './template.hbs';
 import { findInputsForValidation } from '../../utils/validation';
 
 import { Button } from '../../components/Button/Button';
@@ -71,6 +71,10 @@ export default class SignIn extends Block {
 
 	componentDidMount() {
 		return findInputsForValidation;
+	}
+
+	render(): string {
+		return template(this.props);
 	}
 }
 

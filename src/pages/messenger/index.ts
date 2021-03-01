@@ -1,5 +1,5 @@
 import Block from '../../modules/block';
-import { template } from './template';
+import template from './template.hbs';
 import { findInputsForValidation } from '../../utils/validation';
 
 import { Modal } from '../../components/Modal/Modal';
@@ -129,6 +129,10 @@ export default class Messenger extends Block {
 		}
 
 		return findInputsForValidation;
+	}
+
+	render(): string {
+		return template(this.props);
 	}
 }
 

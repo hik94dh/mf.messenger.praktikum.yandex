@@ -1,12 +1,12 @@
 import BlockComponent from '../../modules/block';
-import { buttonTemplate } from './template';
+import template from './template.hbs';
 
 export class Button extends BlockComponent {
 	constructor(props) {
-		super(buttonTemplate, props);
+		super(template, props);
 	}
 
-	render(): any {
-		return this.compile(this.props);
+	render(): string {
+		return template(this.props);
 	}
 }
