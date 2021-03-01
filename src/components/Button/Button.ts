@@ -1,5 +1,5 @@
-import BlockComponent from '../../modules/block.js';
-import { buttonTemplate } from './template.js';
+import BlockComponent from '../../modules/block';
+import { buttonTemplate } from './template';
 
 export class Button extends BlockComponent {
 	constructor(props) {

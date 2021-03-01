@@ -1,4 +1,4 @@
-import BlockComponent from '../../modules/block.js';
+import BlockComponent from '../../modules/block';
 import { inputTemplate } from './template.js';
 export class Input extends BlockComponent {
 	constructor(props) {

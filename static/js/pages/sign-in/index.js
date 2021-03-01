@@ -1,5 +1,5 @@
-import Block from '../../modules/block.js';
-import { template } from './template.js';
+import Block from '../../modules/block';
+import { template } from './template';
 import { findInputsForValidation } from '../../utils/validation.js';
 import { Button } from '../../components/Button/Button.js';
 import { Input } from '../../components/Input/Input.js';

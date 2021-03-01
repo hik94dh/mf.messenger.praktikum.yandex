@@ -1,11 +1,11 @@
-import Block from '../../modules/block.js';
-import { template } from './template.js';
-import { findInputsForValidation } from '../../utils/validation.js';
+import Block from '../../modules/block';
+import { template } from './template';
+import { findInputsForValidation } from '../../utils/validation';
 
-import { Button } from '../../components/Button/Button.js';
-import { Input } from '../../components/Input/Input.js';
+import { Button } from '../../components/Button/Button';
+import { Input } from '../../components/Input/Input';
 
-import AuthApi from '../../api/authApi.js';
+import AuthApi from '../../api/authApi';
 
 const BUTTON_ID = 'signUpButton';
 

@@ -1,4 +1,4 @@
-import BlockComponent from '../../modules/block.js';
+import BlockComponent from '../../modules/block';
 import { modalTemplate } from './template.js';
 export class Modal extends BlockComponent {
 	constructor(props) {

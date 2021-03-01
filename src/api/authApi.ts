@@ -1,4 +1,4 @@
-import { HTTPTransport } from './httpTransport.js';
+import { HTTPTransport } from './httpTransport';
 
 const headers = {
 	'Content-type': 'application/json',

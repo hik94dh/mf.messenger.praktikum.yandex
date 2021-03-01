@@ -1,5 +1,5 @@
-import BlockComponent from '../../modules/block.js';
-import { inputTemplate } from './template.js';
+import BlockComponent from '../../modules/block';
+import { inputTemplate } from './template';
 
 export class Input extends BlockComponent {
 	constructor(props) {

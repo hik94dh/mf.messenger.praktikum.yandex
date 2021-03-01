@@ -1,4 +1,4 @@
-import BlockComponent from '../../modules/block.js';
+import BlockComponent from '../../modules/block';
 import { buttonTemplate } from './template.js';
 export class Button extends BlockComponent {
 	constructor(props) {
