@@ -6,7 +6,7 @@ const METHODS = {
 };
 
 export class HTTPTransport {
-	URL: string = 'https://ya-praktikum.tech/api/v2';
+	URL = 'https://ya-praktikum.tech/api/v2';
 	_url: string;
 
 	constructor() {
