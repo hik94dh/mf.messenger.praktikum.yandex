@@ -8,11 +8,12 @@
 		"lint:js": "eslint \"src/**/*.+(js|ts)\"",
 		"lint:styles": "stylelint \"src/**/*.scss\"",
 		"fix:js": "eslint \"src/**/*.+(js|ts)\" --fix",
-		"test": "./node_modules/.bin/mocha"
+		"test": "./node_modules/.bin/mocha",
+		"precommit": "npm run lint:js && npm run lint:styles && npm run test"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm-run-all test lint:js lint:styles"
+			"pre-commit": "npm run precommit"
 		}
 	},
 	"repository": {
